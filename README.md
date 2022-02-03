@@ -74,7 +74,7 @@ An Android application to show price fluctuations in Norways electricity using X
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Emples of how a project can be used. Additional screenshots, code examples and demos will be here.Link to more resources.
 
 _For more examples, please refer to the [Documentation](https://github.com/just-sudo-it/StromPriserWidget/wiki)_
 
