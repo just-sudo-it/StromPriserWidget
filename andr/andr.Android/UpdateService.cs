@@ -3,6 +3,7 @@ using Android.Appwidget;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Webkit;
 using Android.Widget;
  
 namespace StromPriserWidget.Droid
@@ -28,14 +29,42 @@ namespace StromPriserWidget.Droid
 			return base.OnStartCommand(intent, flags, startId);
 		}
 
-		// Build a widget update to show the current Wiktionary
-		// "Word of the day." Will block until the online API returns.
-		public RemoteViews buildUpdate(Context context)
+		// Build a widget update - Will block until the online API returns.
+		private RemoteViews buildUpdate(Context context)
 		{
 			var entry = BlogPost.GetBlogPost(); // GET THE DATA 
 
 			// Build an update that holds the updated widget contents
 			var updateViews = new RemoteViews(context.PackageName, Resource.Layout.Widget);
+
+
+			var winManager = GetSystemService(Context.WindowService);
+			var webView = new WebView(this);
+			webView.VerticalScrollBarEnabled(false);
+			webView.SetWebViewClient(client);
+
+			var a =
+				new WindowManager.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT,
+											   WindowManager.LayoutParams.WRAP_CONTENT,
+											   WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY,
+											   WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+											   PixelFormat.TRANSLUCENT);
+        params.x = 0;
+        params.y = 0;
+        params.width = 0;
+        params.height = 0;
+
+			final FrameLayout frame = new FrameLayout(this);
+			frame.addView(webView);
+			winManager.addView(frame, params);
+
+			webView.loadUrl("http://stackoverflow.com");
+
+			return START_STICKY;
+
+
+
+
 
 			updateViews.SetTextViewText(Resource.Id.blog_title, entry.Title);
 			updateViews.SetTextViewText(Resource.Id.creator, entry.Creator);
@@ -50,6 +79,36 @@ namespace StromPriserWidget.Droid
 			}
 
 			return updateViews;
+		}
+
+		////////
+		private RemoteViews BuildRemoteViews(Context context, int[] appWidgetIds)
+		{
+			var widgetView = new RemoteViews(context.PackageName, Resource.Layout.Widget);
+
+			SetTextViewText(widgetView);
+			RegisterClicks(context, appWidgetIds, widgetView);
+
+			return widgetView;
+		}
+		private void SetTextViewText(RemoteViews widgetView)
+		{
+			widgetView.SetTextViewText(Resource.Id.widgetMedium, "HelloAppWidget");
+			widgetView.SetTextViewText(Resource.Id.widgetSmall,
+				string.Format("Last update: {0:H:mm:ss}", DateTime.Now));
+		}
+
+		private void RegisterClicks(Context context, int[] appWidgetIds, RemoteViews widgetView)
+		{
+			widgetView.SetOnClickPendingIntent(Resource.Id.widgetAnnouncementIcon,
+				GetPendingSelfIntent(context, AnnouncementClick));
+		}
+
+		private PendingIntent GetPendingSelfIntent(Context context, string action)
+		{
+			var intent = new Intent(context, typeof(AppWidget));
+			intent.SetAction(action);
+			return PendingIntent.GetBroadcast(context, 0, intent, 0);
 		}
 	}
 }

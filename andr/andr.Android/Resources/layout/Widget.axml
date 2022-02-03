@@ -18,7 +18,7 @@
             android:contentDescription="refreshIcon" />
     </RelativeLayout>
     <WebView
-        android:id="@+id/webview" 
+        android:id="@+id/LocalWebView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
  </LinearLayout>

@@ -4,6 +4,8 @@ using Android.Runtime;
 using Android.OS;
 using StromPriserWidget;
 using StromPriserWidget.DI;
+using Android.Webkit;
+using Android.Views;
 
 namespace StromPriserWidget.Droid
 {
@@ -17,8 +19,23 @@ namespace StromPriserWidget.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
-            var container = SimpleInjectorContainer.Create(); //Register platform specifics
+            WebView webView = FindViewById<WebView>(Resource.Id.LocalWebView);
+            webView.SetWebViewClient(new WebViewClient());
+            webView.LoadUrl("http://www.xamarin.com");
+            webView.Settings.JavaScriptEnabled = true;
+            webView.Settings.BuiltInZoomControls = true;
+            webView.Settings.SetSupportZoom(true);
+            webView.ScrollBarStyle = ScrollbarStyles.OutsideOverlay;
+            webView.ScrollbarFadingEnabled = false;
 
+            string HTMLText = "<html>" + "<body>Sample <b>HTML</b> Text<br/><br/>" +
+                              "<span style='color:red;'>Application created by: Anoop Kumar Sharma<span></body>" +
+                              "</html>";
+            //Load HTML Data in WebView
+            webView.LoadData(HTMLText, "text/html", null);
+            webView.EvaluateJavascript();
+
+            var container = SimpleInjectorContainer.Create(); //Register platform specifics
             LoadApplication(new App(container));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
