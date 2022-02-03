@@ -5,7 +5,7 @@ using Android.OS;
 using StromPriserWidget;
 using StromPriserWidget.DI;
 
-namespace andr.Droid
+namespace StromPriserWidget.Droid
 {
     [Activity(Label = "andr", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
@@ -27,5 +27,18 @@ namespace andr.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+        /*        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            SetContentView(Resource.Layout.activity_main);
+
+            Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
+
+            FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
+            fab.Click += FabOnClick;
+        }
+        */
     }
 }

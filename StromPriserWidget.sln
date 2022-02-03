@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StromPriserWidget.Bootstrap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StromPriserWidget.Android", "andr\andr.Android\StromPriserWidget.Android.csproj", "{E70C0C24-51C8-4623-9E22-C9103FE005A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StromPriserWidget.Android.Native", "StromPriserWidget.Android.Native\StromPriserWidget.Android.Native.csproj", "{21E58AEF-7987-4A99-9897-226206881EBB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,12 +49,6 @@ Global
 		{E70C0C24-51C8-4623-9E22-C9103FE005A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E70C0C24-51C8-4623-9E22-C9103FE005A5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E70C0C24-51C8-4623-9E22-C9103FE005A5}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{21E58AEF-7987-4A99-9897-226206881EBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{21E58AEF-7987-4A99-9897-226206881EBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{21E58AEF-7987-4A99-9897-226206881EBB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{21E58AEF-7987-4A99-9897-226206881EBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{21E58AEF-7987-4A99-9897-226206881EBB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{21E58AEF-7987-4A99-9897-226206881EBB}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,7 +59,6 @@ Global
 		{56498602-B817-4442-A2D0-84C494F6E737} = {5E987915-331D-46AF-8D74-C3D77575F3FB}
 		{45B2A979-1BFC-4BA0-8F6F-A6F5E703D990} = {83CF68D8-5BA2-4253-90D5-A130DD2BDCD5}
 		{E70C0C24-51C8-4623-9E22-C9103FE005A5} = {C9E19FDD-0741-45A0-8ABD-26B830FF4599}
-		{21E58AEF-7987-4A99-9897-226206881EBB} = {C9E19FDD-0741-45A0-8ABD-26B830FF4599}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {46B18417-3A0B-477B-9200-F4EDB8CF4C2A}

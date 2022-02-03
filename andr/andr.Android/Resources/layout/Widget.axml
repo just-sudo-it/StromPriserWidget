@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<configuration>
-    <!-- https://go.microsoft.com/fwlink/?linkid=2124038
-    <issue id="HardcodedText" severity="error">
-        <ignore path="Resources\layout\content_main.xml" />
-    </issue>
-    -->
-</configuration>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widgetBackground">
+	<RelativeLayout android:layout_width="72dip">
+		<ImageView
+            android:id="@+id/widgetAnnouncementIcon"
+            android:src="@drawable/announcement" />
+	</RelativeLayout>
+	<LinearLayout>
+		<WebView>
+			
+		</WebView>
+		<TextView
+            android:id="@+id/widgetMedium"
+            android:text="HelloAppWidget" />
+		<TextView
+            android:id="@+id/widgetSmall"
+            android:text="Last refresh: 00:00" />
+	</LinearLayout>
+</LinearLayout>
