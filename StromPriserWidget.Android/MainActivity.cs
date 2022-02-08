@@ -1,12 +1,8 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using AndroidX.AppCompat.Widget;
 using AndroidX.AppCompat.App;
-using Google.Android.Material.FloatingActionButton;
-using Google.Android.Material.Snackbar;
 
 namespace StromPriserWidget.Android
 {
@@ -21,9 +17,6 @@ namespace StromPriserWidget.Android
 
             Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
-
-            FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
-            fab.Click += FabOnClick;
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -41,13 +34,6 @@ namespace StromPriserWidget.Android
             }
 
             return base.OnOptionsItemSelected(item);
-        }
-
-        private void FabOnClick(object sender, EventArgs eventArgs)
-        {
-            View view = (View) sender;
-            Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
-                .SetAction("Action", (View.IOnClickListener)null).Show();
         }
     }
 }

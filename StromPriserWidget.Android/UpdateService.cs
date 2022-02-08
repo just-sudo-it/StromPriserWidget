@@ -1,9 +1,8 @@
-﻿
- 
-using System;
+﻿using System;
 using Android.App;
 using Android.Appwidget;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Webkit;
@@ -58,7 +57,7 @@ namespace StromPriserWidget.Droid
         params.width = 0;
         params.height = 0;
 
-			final FrameLayout frame = new FrameLayout(this);
+			FrameLayout frame = new FrameLayout(this);
 			frame.addView(webView);
 			winManager.addView(frame, params);
 
