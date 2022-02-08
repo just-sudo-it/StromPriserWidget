@@ -7,7 +7,7 @@ namespace StromPriserWidget.DI
     public class SimpleInjectorContainerBuilder
     {
         public List<SimpleInjectorContainerModule> _modules;
-
+        /*
         private OmniContainerBuilder()
         {
             _modules = new List<OmniContainerModule>();
@@ -34,5 +34,6 @@ namespace StromPriserWidget.DI
         {
             OmniContainer.Initialize(_modules);
         }
+    }*/
     }
 }

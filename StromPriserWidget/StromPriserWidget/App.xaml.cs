@@ -1,5 +1,6 @@
 ﻿using SimpleInjector;
 using StromPriserWidget.Bootstrapper;
+using StromPriserWidget.View;
 using Xamarin.Forms;
 
 namespace StromPriserWidget
