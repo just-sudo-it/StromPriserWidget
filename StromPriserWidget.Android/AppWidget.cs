@@ -4,7 +4,7 @@ using Android.Content;
 
 namespace StromPriserWidget.Droid
 {
-    [BroadcastReceiver(Label = "HellApp Widget")]
+    [BroadcastReceiver(Label = "StromPriserWidget")]
     [IntentFilter(new [] { "android.appwidget.action.APPWIDGET_UPDATE" })]
     [MetaData("android.appwidget.provider", Resource = "@xml/appwidgetprovider")]
     public class AppWidget : AppWidgetProvider

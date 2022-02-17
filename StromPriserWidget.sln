@@ -1,21 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31911.196
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StromPriserWidget", "StromPriserWidget\StromPriserWidget\StromPriserWidget.csproj", "{7899E8CA-4917-40D4-A95B-E00ACEF86E9F}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{83CF68D8-5BA2-4253-90D5-A130DD2BDCD5}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platform", "Platform", "{C9E19FDD-0741-45A0-8ABD-26B830FF4599}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{5E987915-331D-46AF-8D74-C3D77575F3FB}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StromPriserWidget.View", "StromPriserWidget.View\StromPriserWidget.View.csproj", "{BB7AC531-4836-4F8F-A1F4-A67B82342048}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StromPriserWidget.DI", "StromPriserWidget.DI\StromPriserWidget.DI.csproj", "{56498602-B817-4442-A2D0-84C494F6E737}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StromPriserWidget.Bootstrapper", "StromPriserWidget.Bootstrapper\StromPriserWidget.Bootstrapper.csproj", "{45B2A979-1BFC-4BA0-8F6F-A6F5E703D990}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StromPriserWidget.Android", "StromPriserWidget.Android\StromPriserWidget.Android.csproj", "{41BDA0D0-6152-4D89-AE43-80707FE1FABD}"
 EndProject
@@ -25,24 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7899E8CA-4917-40D4-A95B-E00ACEF86E9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7899E8CA-4917-40D4-A95B-E00ACEF86E9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7899E8CA-4917-40D4-A95B-E00ACEF86E9F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{7899E8CA-4917-40D4-A95B-E00ACEF86E9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7899E8CA-4917-40D4-A95B-E00ACEF86E9F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7899E8CA-4917-40D4-A95B-E00ACEF86E9F}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{BB7AC531-4836-4F8F-A1F4-A67B82342048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BB7AC531-4836-4F8F-A1F4-A67B82342048}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BB7AC531-4836-4F8F-A1F4-A67B82342048}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BB7AC531-4836-4F8F-A1F4-A67B82342048}.Release|Any CPU.Build.0 = Release|Any CPU
-		{56498602-B817-4442-A2D0-84C494F6E737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56498602-B817-4442-A2D0-84C494F6E737}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56498602-B817-4442-A2D0-84C494F6E737}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56498602-B817-4442-A2D0-84C494F6E737}.Release|Any CPU.Build.0 = Release|Any CPU
-		{45B2A979-1BFC-4BA0-8F6F-A6F5E703D990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{45B2A979-1BFC-4BA0-8F6F-A6F5E703D990}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{45B2A979-1BFC-4BA0-8F6F-A6F5E703D990}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{45B2A979-1BFC-4BA0-8F6F-A6F5E703D990}.Release|Any CPU.Build.0 = Release|Any CPU
 		{41BDA0D0-6152-4D89-AE43-80707FE1FABD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{41BDA0D0-6152-4D89-AE43-80707FE1FABD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41BDA0D0-6152-4D89-AE43-80707FE1FABD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -54,10 +24,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{7899E8CA-4917-40D4-A95B-E00ACEF86E9F} = {83CF68D8-5BA2-4253-90D5-A130DD2BDCD5}
-		{BB7AC531-4836-4F8F-A1F4-A67B82342048} = {5E987915-331D-46AF-8D74-C3D77575F3FB}
-		{56498602-B817-4442-A2D0-84C494F6E737} = {5E987915-331D-46AF-8D74-C3D77575F3FB}
-		{45B2A979-1BFC-4BA0-8F6F-A6F5E703D990} = {83CF68D8-5BA2-4253-90D5-A130DD2BDCD5}
 		{41BDA0D0-6152-4D89-AE43-80707FE1FABD} = {C9E19FDD-0741-45A0-8ABD-26B830FF4599}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

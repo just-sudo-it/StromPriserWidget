@@ -2,116 +2,70 @@
 using Android.App;
 using Android.Appwidget;
 using Android.Content;
-using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
-using Android.Webkit;
 using Android.Widget;
 using StromPriserWidget.Android;
+using Java.Lang;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace StromPriserWidget.Droid
 {
 	[Service(IsolatedProcess = true)]
 	public class UpdateService : Service
 	{
+		private static readonly HttpClient client = new HttpClient();
+
 		public override IBinder OnBind(Intent intent)
 			=> null;
 
 		public override StartCommandResult OnStartCommand(Intent intent, [GeneratedEnum] StartCommandFlags flags, int startId)
 		{
-			Toast.MakeText(this, "Service  Started", ToastLength.Short)
+			Toast.MakeText(this, "Update Service Started", ToastLength.Short)
 				 .Show();
 
-			// Build the widget update for today
-			RemoteViews updateViews = buildUpdate(this);
+			// Build the widget update -Android forces synchronous execution
+			RemoteViews updateViews = BuildRemoteViews(this).Result;
+
 			// Push update for this widget to the home screen
-			ComponentName thisWidget = new ComponentName(this, Java.Lang.Class.FromType(typeof(AppWidget)).Name);
-			AppWidgetManager manager = AppWidgetManager.GetInstance(this);
-			manager.UpdateAppWidget(thisWidget, updateViews); 
-			
-			return base.OnStartCommand(intent, flags, startId);
+			AppWidgetManager.GetInstance(this)
+				.UpdateAppWidget(new ComponentName(this, Class.FromType(typeof(AppWidget)).Name), updateViews);
+
+			return StartCommandResult.Sticky;
 		}
 
-		// Build a widget update - Will block until the online API returns.
-		private RemoteViews buildUpdate(Context context)
+		private async Task<RemoteViews> BuildRemoteViews(Context context)
 		{
-			var entry = BlogPost.GetBlogPost(); // GET THE DATA 
+			var priceData = await GetData();
 
 			// Build an update that holds the updated widget contents
-			var updateViews = new RemoteViews(context.PackageName, Resource.Layout.Widget);
+			var updateViews = new RemoteViews(context.PackageName, Resource.Layout.widget);
 
-
-			var winManager = GetSystemService(Context.WindowService);
-			var webView = new WebView(this);
-			webView.VerticalScrollBarEnabled(false);
-			webView.SetWebViewClient(client);
-
-			var a =
-				new WindowManager.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT,
-											   WindowManager.LayoutParams.WRAP_CONTENT,
-											   WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY,
-											   WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-											   PixelFormat.TRANSLUCENT);
-        params.x = 0;
-        params.y = 0;
-        params.width = 0;
-        params.height = 0;
-
-			FrameLayout frame = new FrameLayout(this);
-			frame.addView(webView);
-			winManager.addView(frame, params);
-
-			webView.loadUrl("http://stackoverflow.com");
-
-			return START_STICKY;
-
-
-
-
-
-			updateViews.SetTextViewText(Resource.Id.blog_title, entry.Title);
-			updateViews.SetTextViewText(Resource.Id.creator, entry.Creator);
-
-			// When user clicks on widget, launch to Wiktionary definition page
-			if (!string.IsNullOrEmpty(entry.Link))
-			{
-				Intent defineIntent = new Intent(Intent.ActionView, Android.Net.Uri.Parse(entry.Link));
-
-				PendingIntent pendingIntent = PendingIntent.GetActivity(context, 0, defineIntent, 0);
-				updateViews.SetOnClickPendingIntent(Resource.Id.Widget, pendingIntent);
-			}
+			//updateViews.SetTextViewText(Resource.Id.blog_title, data.Title);
+			//updateViews.SetTextViewText(Resource.Id.creator, data.Creator);
 
 			return updateViews;
 		}
-
-		////////
-		private RemoteViews BuildRemoteViews(Context context, int[] appWidgetIds)
+		public async Task<string> GetData()
 		{
-			var widgetView = new RemoteViews(context.PackageName, Resource.Layout.Widget);
+			using var httpRequestMessage = new HttpRequestMessage
+			{
+				Method = HttpMethod.Get,
+				RequestUri = new Uri("https://api.clickatell.com/rest/message"),
+				Headers =
+				{
+					{ HttpRequestHeader.Authorization.ToString(), "Bearer xxxxxxxxxxxxxxxxxxx" },
+					{ HttpRequestHeader.Accept.ToString(), "application/json" },
+					{ "X-Version", "1" }
+				}
+			};
 
-			SetTextViewText(widgetView);
-			RegisterClicks(context, appWidgetIds, widgetView);
+			var response = await client.SendAsync(httpRequestMessage);
+			response.EnsureSuccessStatusCode();
 
-			return widgetView;
-		}
-		private void SetTextViewText(RemoteViews widgetView)
-		{
-			widgetView.SetTextViewText(Resource.Id.widgetMedium, "HelloAppWidget");
-			widgetView.SetTextViewText(Resource.Id.widgetSmall,
-				string.Format("Last update: {0:H:mm:ss}", DateTime.Now));
-		}
-
-		private void RegisterClicks(Context context, int[] appWidgetIds, RemoteViews widgetView)
-		{
-			widgetView.SetOnClickPendingIntent(Resource.Id.widgetAnnouncementIcon,
-				GetPendingSelfIntent(context, AnnouncementClick));
-		}
-
-		private PendingIntent GetPendingSelfIntent(Context context, string action)
-		{
-			var intent = new Intent(context, typeof(AppWidget));
-			intent.SetAction(action);
-			return PendingIntent.GetBroadcast(context, 0, intent, 0);
+			return await response.Content.ReadAsStringAsync();
 		}
 	}
 }
