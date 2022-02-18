@@ -13,7 +13,9 @@ using System.Threading.Tasks;
 
 namespace StromPriserWidget.Droid
 {
-	[Service(IsolatedProcess = true)]
+	[Service]
+	//	[Service(IsolatedProcess = true)]
+
 	public class UpdateService : Service
 	{
 		private static readonly HttpClient client = new HttpClient();
@@ -27,22 +29,21 @@ namespace StromPriserWidget.Droid
 				 .Show();
 
 			// Build the widget update -Android forces synchronous execution
-			RemoteViews updateViews = BuildRemoteViews(this).Result;
+			RemoteViews updateViews = Task.Run(() => BuildRemoteViews(this)).Result;
 
 			// Push update for this widget to the home screen
 			AppWidgetManager.GetInstance(this)
 				.UpdateAppWidget(new ComponentName(this, Class.FromType(typeof(AppWidget)).Name), updateViews);
 
-			return StartCommandResult.Sticky;
+			return StartCommandResult.NotSticky;
 		}
 
 		private async Task<RemoteViews> BuildRemoteViews(Context context)
 		{
-			var priceData = await GetData();
+			var prices = await GetData();
 
 			// Build an update that holds the updated widget contents
 			var updateViews = new RemoteViews(context.PackageName, Resource.Layout.widget);
-
 			//updateViews.SetTextViewText(Resource.Id.blog_title, data.Title);
 			//updateViews.SetTextViewText(Resource.Id.creator, data.Creator);
 
@@ -54,15 +55,15 @@ namespace StromPriserWidget.Droid
 			{
 				Method = HttpMethod.Get,
 				RequestUri = new Uri("https://api.clickatell.com/rest/message"),
-				Headers =
+				/*Headers =
 				{
 					{ HttpRequestHeader.Authorization.ToString(), "Bearer xxxxxxxxxxxxxxxxxxx" },
 					{ HttpRequestHeader.Accept.ToString(), "application/json" },
 					{ "X-Version", "1" }
-				}
+				}*/
 			};
 
-			var response = await client.SendAsync(httpRequestMessage);
+			var response = await client.GetAsync("https://api.clickatell.com/rest/message");
 			response.EnsureSuccessStatusCode();
 
 			return await response.Content.ReadAsStringAsync();

@@ -1,7 +1,5 @@
 ﻿using Android.App;
 using Android.OS;
-using Android.Views;
-using AndroidX.AppCompat.Widget;
 using AndroidX.AppCompat.App;
 
 namespace StromPriserWidget.Android
@@ -14,26 +12,6 @@ namespace StromPriserWidget.Android
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
-
-            Toolbar toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
-            SetSupportActionBar(toolbar);
-        }
-
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Menu.menu_main, menu);
-            return true;
-        }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            int id = item.ItemId;
-            if (id == Resource.Id.action_settings)
-            {
-                return true;
-            }
-
-            return base.OnOptionsItemSelected(item);
         }
     }
 }
