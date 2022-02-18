@@ -4,11 +4,20 @@
     android:id="@+id/widget"
     android:background="@drawable/rounded_layout_bg" 
     android:padding="4dip"
+    
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
- 
- 
+    <View
+        android:id="@+id/chartview"
+        android:layout_width=""
+        android:layout_height=""/>
+    <ImageView
+        android:id="@+id/image_chartview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="---@drawable/my_image"
+        android:contentDescription="descc"/>
 
 </LinearLayout>
   

@@ -8,8 +8,10 @@ using Android.Widget;
 using StromPriserWidget.Android;
 using Java.Lang;
 using System.Net;
+using Android.Graphics;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Syncfusion.SfChart.XForms;
 
 namespace StromPriserWidget.Droid
 {
@@ -44,6 +46,9 @@ namespace StromPriserWidget.Droid
 
 			// Build an update that holds the updated widget contents
 			var updateViews = new RemoteViews(context.PackageName, Resource.Layout.widget);
+
+			updateViews.SetImageViewBitmap(Resource.Id.image_chartview, CreateCharts().ToBitmap());
+
 			//updateViews.SetTextViewText(Resource.Id.blog_title, data.Title);
 			//updateViews.SetTextViewText(Resource.Id.creator, data.Creator);
 
@@ -68,5 +73,45 @@ namespace StromPriserWidget.Droid
 
 			return await response.Content.ReadAsStringAsync();
 		}
+
+		public SfChart CreateCharts()
+		{
+			var chart = new SfChart();
+			chart.Title.Text = "Chart";
+
+			//Initializing primary axis
+			CategoryAxis primaryAxis = new CategoryAxis();
+			primaryAxis.Title.Text = "Name";
+			chart.PrimaryAxis = primaryAxis;
+
+			//Initializing secondary Axis
+			var secondaryAxis = new NumericalAxis();
+			secondaryAxis.Title.Text = "Height (in cm)";
+			chart.SecondaryAxis = secondaryAxis;
+
+			//Initializing column series
+			var series = new ColumnSeries();
+			series.ItemsSource = viewModel.Data;
+			series.XBindingPath = "Name";
+			series.YBindingPath = "Height";
+			series.Label = "Heights";
+
+			series.DataMarker = new ChartDataMarker();
+			series.EnableTooltip = true;
+			chart.Legend = new ChartLegend();
+
+			chart.Series.Add(series);
+
+
+			var ft = FragmentManager.BeginTransaction();
+			ft.Replace(Resource.Id.fragment_frame_layout, frag, "main");
+			ft.Commit();
+
+
+
+
+			return chart;
+		}
+
 	}
 }
