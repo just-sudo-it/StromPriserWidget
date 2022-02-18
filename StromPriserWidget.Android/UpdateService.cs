@@ -7,17 +7,14 @@ using Android.Runtime;
 using Android.Widget;
 using StromPriserWidget.Android;
 using Java.Lang;
-using System.Net;
-using Android.Graphics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Syncfusion.SfChart.XForms;
 
 namespace StromPriserWidget.Droid
 {
-	[Service]
+    [Service]
 	//	[Service(IsolatedProcess = true)]
-
 	public class UpdateService : Service
 	{
 		private static readonly HttpClient client = new HttpClient();
@@ -91,7 +88,7 @@ namespace StromPriserWidget.Droid
 
 			//Initializing column series
 			var series = new ColumnSeries();
-			series.ItemsSource = viewModel.Data;
+			//series.ItemsSource = viewModel.Data;
 			series.XBindingPath = "Name";
 			series.YBindingPath = "Height";
 			series.Label = "Heights";
@@ -102,16 +99,7 @@ namespace StromPriserWidget.Droid
 
 			chart.Series.Add(series);
 
-
-			var ft = FragmentManager.BeginTransaction();
-			ft.Replace(Resource.Id.fragment_frame_layout, frag, "main");
-			ft.Commit();
-
-
-
-
 			return chart;
 		}
-
 	}
 }
