@@ -66,7 +66,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-An Android application to show price fluctuations in Norways electricity using XML data retrieved from https://minspotpris.no/  updated on a daily schedule.
+An Android application to show price fluctuations in Norways electricity   using data from ENTSO-E API updated on a daily schedule.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
