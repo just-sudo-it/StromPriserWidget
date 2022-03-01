@@ -31,10 +31,9 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Android StromPriser Widget</h3>
+  <h3 align="center">StromPriser Android Widget</h3>
 
   <p align="center">
-    An Android application to show price fluctuations in Norways electricity
     <br />
     <br> 
     ·
@@ -66,10 +65,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-An Android application to show price fluctuations in Norways electricity using XML data retrieved from https://minspotpris.no/  updated on a daily schedule.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
+An Android application to show price fluctuations in Norways electricity   using data from ENTSO-E API updated on a daily schedule.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -78,9 +74,6 @@ Emples of how a project can be used. Additional screenshots, code examples and d
 
 _For more examples, please refer to the [Documentation](https://github.com/just-sudo-it/StromPriserWidget/wiki)_
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 <!-- ROADMAP -->
 ## Roadmap
 
@@ -88,8 +81,6 @@ _For more examples, please refer to the [Documentation](https://github.com/just-
 - [ ] Add Changelog
 
 See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -105,18 +96,10 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- CONTACT -->
 ## Contact
