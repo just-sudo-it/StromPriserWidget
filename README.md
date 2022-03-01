@@ -34,7 +34,6 @@
   <h3 align="center">StromPriser Android Widget</h3>
 
   <p align="center">
-    An Android application to show price fluctuations in Norways electricity
     <br />
     <br> 
     ·
