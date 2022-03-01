@@ -67,18 +67,12 @@
 
 An Android application to show price fluctuations in Norways electricity   using data from ENTSO-E API updated on a daily schedule.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 <!-- USAGE EXAMPLES -->
 ## Usage
 
 Emples of how a project can be used. Additional screenshots, code examples and demos will be here.Link to more resources.
 
 _For more examples, please refer to the [Documentation](https://github.com/just-sudo-it/StromPriserWidget/wiki)_
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -87,8 +81,6 @@ _For more examples, please refer to the [Documentation](https://github.com/just-
 - [ ] Add Changelog
 
 See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -104,18 +96,10 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- CONTACT -->
 ## Contact
